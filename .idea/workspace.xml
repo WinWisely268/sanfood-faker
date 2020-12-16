@@ -2,8 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff4dd7f0-1659-40ec-b61f-5c4130eeef99" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fakegenerators/accounts.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/queries/mutations/mut_accounts.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gqlgenc.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gqlgenc.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utilities/querygen.go" beforeDir="false" afterPath="$PROJECT_DIR$/utilities/templates.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fakegen.go" beforeDir="false" afterPath="$PROJECT_DIR$/fakegen.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fakehelper/funcs.go" beforeDir="false" afterPath="$PROJECT_DIR$/fakehelper/funcs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/models_gen.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/models_gen.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +61,19 @@
       <recent name="$PROJECT_DIR$/queries/mutations" />
       <recent name="$PROJECT_DIR$/graph" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="install-dep" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="install-dep" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Makefile.install-dep" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">

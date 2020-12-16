@@ -55,9 +55,9 @@ type StringComparisonExp struct {
 
 // columns and relationships of "accounts"
 type Accounts struct {
-	Email     string `json:"email"`
-	LastLogin string `json:"last_login"`
-	Role      string `json:"role"`
+	Email     string  `json:"email"`
+	LastLogin *string `json:"last_login"`
+	Role      string  `json:"role"`
 	// An object relationship
 	User   *Users `json:"user"`
 	UserID string `json:"user_id"`
@@ -103,11 +103,11 @@ type AccountsBoolExp struct {
 
 // input type for inserting data into table "accounts"
 type AccountsInsertInput struct {
-	Email     *string                 `json:"email"`
-	LastLogin *string                 `json:"last_login"`
-	Role      *string                 `json:"role"`
-	User      *UsersObjRelInsertInput `json:"user"`
-	UserID    *string                 `json:"user_id"`
+	Email     *string                 `json:"email" fake:"{mailgen}"`
+	LastLogin *string                 `json:"last_login" fake:"skip"`
+	Role      *string                 `json:"role" fake:"{rolegen}"`
+	User      *UsersObjRelInsertInput `json:"user" fake:"skip"`
+	UserID    *string                 `json:"user_id" fake:"{uuid}"`
 }
 
 // aggregate max on columns
@@ -6564,3 +6564,4 @@ func (e *UsersUpdateColumn) UnmarshalGQL(v interface{}) error {
 func (e UsersUpdateColumn) MarshalGQL(w io.Writer) {
 	fmt.Fprint(w, strconv.Quote(e.String()))
 }
+

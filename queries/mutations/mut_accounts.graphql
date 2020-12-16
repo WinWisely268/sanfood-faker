@@ -1,0 +1,15 @@
+mutation bulkInsertAccounts(
+    $accountsInsertData: [accounts_insert_input!]!,
+) {
+    insert_accounts(
+        objects: $accountsInsertData,
+        on_conflict: {
+            constraint: accounts_email_key,
+            update_columns: [email]
+        }
+    ) {
+        returning {
+            user_id
+        }
+    }
+}

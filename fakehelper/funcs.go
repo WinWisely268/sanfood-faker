@@ -10,6 +10,7 @@ import (
 	"math/rand"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 	"unsafe"
 
@@ -24,6 +25,7 @@ const (
 	letterIdxBits = 6                    // 6 bits to represent a letter index
 	letterIdxMask = 1<<letterIdxBits - 1 // All 1-bits, as many as letterIdxBits
 	letterIdxMax  = 63 / letterIdxBits   // # of letter indices fitting in 63 bits
+	roles         = "admin acrfixed acrleader acrmobile anonymous asm exec staff"
 )
 
 type RefCount struct {
@@ -45,6 +47,36 @@ func (r *RefCount) ResetLastReference() *RefCount {
 	rc := r
 	rc.LastReference = 0
 	return rc
+}
+
+func FakeGenRole() (string, gofakeit.Info) {
+	return "rolegen", gofakeit.Info{
+		Category:    "rolegen",
+		Description: "generate random user role",
+		Example:     "rolegen",
+		Output:      "*string",
+		Params:      []gofakeit.Param{},
+		Call: func(m *map[string][]string, info *gofakeit.Info) (interface{}, error) {
+			splitted := strings.Split(roles, " ")
+			lenSplit := len(splitted)
+			randIdx := rand.Intn(lenSplit)
+			return splitted[randIdx], nil
+		},
+	}
+}
+
+func FakeMailGen() (string, gofakeit.Info) {
+	return "mailgen", gofakeit.Info{
+		Category:    "mailgen",
+		Description: "generate random user email",
+		Example:     "mailgen",
+		Output:      "string",
+		Params:      []gofakeit.Param{},
+		Call: func(m *map[string][]string, info *gofakeit.Info) (interface{}, error) {
+			mail := gofakeit.Email()
+			return mail, nil
+		},
+	}
 }
 
 func FakeNameSequence(callFunc func(prefix, referral string, isRef, isUniqueRef, reset bool) (interface{}, error)) (string, gofakeit.Info) {
@@ -138,7 +170,6 @@ func FakeRandomTs() (string, gofakeit.Info) {
 		},
 	}
 }
-
 
 // FakeAvatarGen generates and writes random user / project / org letter avatar
 // Outputs the filepath to the generated image

@@ -1,0 +1,7 @@
+query getMarketingRegions($id: uuid!) {
+    marketing_regions(where: {id: {_eq: $id}}) {
+        notes
+        region_code
+        id
+    }
+}

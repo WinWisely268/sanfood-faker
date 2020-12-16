@@ -1,0 +1,42 @@
+mutation upsertUser(
+    $accountId: uuid!,
+    $address: String!,
+    $governmentId: String!,
+    $birthDate: date!,
+    $name: String!,
+) {
+    insert_users_one(
+        object:
+        {
+            account_id: $accountId,
+            address: $address,
+            government_id: $governmentId,
+            birth_date: $birthDate,
+            name: $name,
+        }
+        , on_conflict: {
+            constraint: users_government_id_key,
+            update_columns: [last_modified]}
+    )
+    {
+        id
+    }
+}
+
+mutation upsertUserProfile(
+    $userId: uuid!,
+    $devices: jsonb!
+){
+    insert_user_profiles_one(
+        object: {
+            user_id: $userId,
+            devices: $devices
+        },
+        on_conflict: {
+            constraint: user_profiles_user_id_key,
+            update_columns: []
+        }
+    ){
+        id
+    }
+}

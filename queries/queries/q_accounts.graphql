@@ -1,0 +1,41 @@
+query getAccount($id: uuid!) {
+    accounts(where: { user_id: { _eq: $id } }) {
+        user_id
+        email
+        role
+        last_login
+        user {
+            id
+            address
+            birth_date
+            government_id
+            contract_id
+            locked
+            name
+            profile_id
+            created_at
+            last_modified
+        }
+    }
+}
+
+query listAccount($last_login: timestamptz!) {
+    accounts(where: { last_login: { _gt: $last_login } }, limit: 10) {
+        user_id
+        email
+        role
+        last_login
+        user {
+            id
+            address
+            birth_date
+            government_id
+            contract_id
+            locked
+            name
+            profile_id
+            created_at
+            last_modified
+        }
+    }
+}
